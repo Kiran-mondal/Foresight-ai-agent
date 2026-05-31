@@ -37,4 +37,4 @@ Follow the steps below to run this project on your local machine:
 ```bash
 
 git clone [https://github.com/your-username/predictive-ai-advisor.git](https://github.com/your-username/predictive-ai-advisor.git)
-cd predictive-ai-advisor```
+cd predictive-ai-advisor
