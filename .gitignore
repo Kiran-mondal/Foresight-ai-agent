@@ -1,0 +1,5 @@
+.env
+pycache/
+*.pyc
+.streamlit/
+user_feedback_memory.txt
