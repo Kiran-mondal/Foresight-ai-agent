@@ -33,7 +33,11 @@ To operate this predictive engine locally, you will need to acquire developer cr
 - 📉 Probability-Weighted Outputs: Every predictive strategy generated features detailed structural breakdowns matched with estimated statistical uncertainty scales.
 - 🔄 Continuous Agentic Optimization Loop: Implements human-in-the-loop validation, enabling the agent to adjust its downstream behavior pattern based on direct user input.
 
----
+## Open your newly created .env file and input your collected secure access tokens:
+# Core AI Engines (Specify your preferred foundation target keys)
+OPENAI_API_KEY=your_actual_openai_key_here
+GOOGLE_API_KEY=your_actual_gemini_key_here
+ANTHROPIC_API_KEY=your_actual_claude_key_here
 
 ## 🚀 Step-by-Step Installation & Setup
 
@@ -46,9 +50,3 @@ cd predictive-ai-advisor
 pip install -r requirements.txt
 cp .env.example .env
 streamlit run app.py
-
-Open your newly created .env file and input your collected secure access tokens:
-# Core AI Engines (Specify your preferred foundation target keys)
-OPENAI_API_KEY=your_actual_openai_key_here
-GOOGLE_API_KEY=your_actual_gemini_key_here
-ANTHROPIC_API_KEY=your_actual_claude_key_here
