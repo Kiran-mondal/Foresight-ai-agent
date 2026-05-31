@@ -40,7 +40,7 @@ To operate this predictive engine locally, you will need to acquire developer cr
 Follow these exact execution procedures to instantiate the environment locally:
 
 ### 1. Clone the Codebase
-`bash
+```bash
 git clone [https://github.com/your-username/predictive-ai-advisor.git](https://github.com/your-username/predictive-ai-advisor.git)
 cd predictive-ai-advisor
 pip install -r requirements.txt
