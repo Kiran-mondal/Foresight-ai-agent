@@ -2,47 +2,46 @@ import os
 from langchain.schema import HumanMessage, SystemMessage
 
 def get_available_llm():
-    """Checks the user's .env file for API keys and automatically determines the model to use"""
+    """Evaluates local environment variables to dynamically spin up the available engine."""
     
-    # 1. First, check for Anthropic Claude
+    # 1. Primary fallback check for Anthropic Claude 3.5 Sonnet
     if os.getenv("ANTHROPIC_API_KEY"):
         from langchain_anthropic import ChatAnthropic
         return ChatAnthropic(model_name="claude-3-5-sonnet-20240620", temperature=0.3)
         
-    # 2. If Claude is missing, check for Google Gemini
+    # 2. Secondary fallback check for Google Gemini 1.5 Pro
     elif os.getenv("GOOGLE_API_KEY"):
         from langchain_google_genai import ChatGoogleGenerativeAI
         return ChatGoogleGenerativeAI(model="gemini-1.5-pro", temperature=0.3)
         
-    # 3. If Gemini is also missing, use OpenAI GPT as the default fallback
+    # 3. Tertiary fallback configuration using OpenAI GPT-4o-mini
     elif os.getenv("OPENAI_API_KEY"):
         from langchain_openai import ChatOpenAI
         return ChatOpenAI(model="gpt-4o-mini", temperature=0.3)
         
     else:
-        raise ValueError("Error: No valid AI API Key (OpenAI/Gemini/Claude) was found in the .env file!")
+        raise ValueError("Configuration Error: No active credentials detected for OpenAI, Google Gemini, or Anthropic Claude in the environment mapping.")
 
 def run_predictive_agent(user_prompt, live_context, user_feedback_memory=""):
-    """To generate predictions by combining live data and previous user feedback"""
+    """Coordinates context synthesis and formats predictive roadmaps alongside approximate statistical scoring."""
     
     system_instruction = (
-        "You are an advanced Personal Predictive AI Advisor. Your job is to analyze real-time data, "
-        "historical contexts, and provide a clear roadmap/prediction for the user with an approximate percentage probability. "
-        "Always be objective and balance logic with user preferences.\n\n"
-        f"CRITICAL USER MEMORY/PREFERENCES (Adhere strictly to this): {user_feedback_memory}"
+        "You are an advanced Personal Predictive AI Advisor. Your assignment is to thoroughly evaluate real-time data "
+        "streams and cross-reference them with historical contexts. Always generate a definitive roadmap or prediction "
+        "supplemented by an approximate mathematical percentage probability calculation. Ensure structural objectivity.\n\n"
+        f"CRITICAL USER PREFERENCES & HISTORICAL FEEDBACK (Adhere strictly to this learned behavior): {user_feedback_memory}"
     )
     
-    # Load the available AI engine
     try:
         llm = get_available_llm()
     except Exception as e:
         return str(e)
     
-    # Full prompt structure
+    # Constructing a structured input pipeline for the model context window
     full_user_content = (
-        f"User Query: {user_prompt}\n\n"
-        f"Real-Time Fetched Context (News, Weather, Markets):\n{live_context}\n\n"
-        "Please provide a predictive breakdown, percentage estimation, and ask for my opinion."
+        f"User Scenario Inquiry: {user_prompt}\n\n"
+        f"Aggregated Real-Time Environmental Context:\n{live_context}\n\n"
+        "Analyze the intersection of this data, present a clear predictive strategic roadmap with estimated percentage scores, and prompt me for operational feedback."
     )
     
     messages = [
