@@ -34,6 +34,7 @@ The most unique feature of this project is its Human-in-the-Loop Feedback Mechan
 Follow the steps below to run this project on your local machine:
 
 ### 1. Clone the Repository
-`bash
+```bash
+
 git clone [https://github.com/your-username/predictive-ai-advisor.git](https://github.com/your-username/predictive-ai-advisor.git)
-cd predictive-ai-advisor
+cd predictive-ai-advisor```
